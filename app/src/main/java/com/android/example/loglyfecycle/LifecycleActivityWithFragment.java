@@ -56,8 +56,8 @@ public class LifecycleActivityWithFragment extends AppCompatActivity {
                 mFragmentManager.beginTransaction()
                         .remove(fragment)
                         // WORKAROUND_FOR_BUG_19917_KEY
+                        // .commit();
                         .commitAllowingStateLoss();
-//                        .commit();
                 setResult(RESULT_OK);
                 finish();
             }

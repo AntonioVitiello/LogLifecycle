@@ -55,10 +55,9 @@ public class LifecycleFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        // WORKAROUND_FOR_BUG_19917_KEY
+        super.onSaveInstanceState(outState);
         outState.putString(BUNDLE_TITLE_KEY, getString(R.string.activity_lyfecycle));
         logMe();
-        super.onSaveInstanceState(outState);
     }
 
     @Override
