@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">LyfecycleLogger</string>
+    <string name="activity_lyfecycle">Activity lyfecycle</string>
+    <string name="fragment_lyfecycle">Fragment lyfecycle</string>
+    <string name="start_log_of">Start logging of:</string>
+    <string name="lifecycle_activity_label">Activity lifecycle</string>
+    <string name="log_reset">Reset log</string>
+    <string name="open_and_close_new_activity">Open and close new Activity</string>
+    <string name="lifecycle_activity_with_fragment_label">Fragment lifecycle</string>
+    <string name="adding_and_removing_fragment">Adding and removing Fragment</string>
+</resources>
