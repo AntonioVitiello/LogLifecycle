@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import com.util.Log;
 
 import info.metadude.android.typedpreferences.BooleanPreference;
 import info.metadude.android.typedpreferences.StringPreference;
@@ -45,7 +46,7 @@ public class PreferenceHelper {
         synchronized (mLogPreference) {
             String logMsg = mLogPreference.isSet() ? mLogPreference.get() + MSG_SEPARATOR + msg : msg;
             mLogPreference.set(logMsg);
-            System.out.println("PreferenceHelper.addLog: " + msg);
+            Log.d(null, "PreferenceHelper.addLog: " + msg);
         }
     }
 

@@ -8,4 +8,5 @@
     <string name="lifecycle_activity_with_fragment_label">Fragment lifecycle</string>
     <string name="open_and_close_new_activity">Rotate if you want to see more states</string>
     <string name="adding_and_removing_fragment">Rotate if you want to see more states</string>
+    <string name="log_tag">antlap</string>
 </resources>
