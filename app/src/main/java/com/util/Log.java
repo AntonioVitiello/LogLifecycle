@@ -1,9 +1,5 @@
 package com.util;
 
-import android.content.Context;
-
-import com.android.example.loglyfecycle.R;
-
 /**
  * Created by antlap on 30/11/2017.
  */
@@ -14,10 +10,8 @@ public class Log {
     private static boolean sIsLogTagConcat = false;
     private static boolean sDebug = true;
 
-    public static void init(Context context, boolean debug) {
+    public static void init(boolean debug, String logTag, boolean isLogTagConcat) {
         sDebug = debug;
-        String logTag = context.getString(R.string.log_tag);
-        boolean isLogTagConcat = context.getResources().getBoolean(R.bool.log_tag_concat);
         sIsLogTagDefined = logTag != null;
         if(sIsLogTagDefined) {
             sLogTag = logTag;

@@ -14,7 +14,9 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.init(this, BuildConfig.DEBUG);
+        Log.init(BuildConfig.DEBUG,
+                getString(R.string.log_tag),
+                getResources().getBoolean(R.bool.log_tag_concat));
         mPreferenceHelper = new PreferenceHelper(this);
     }
 
