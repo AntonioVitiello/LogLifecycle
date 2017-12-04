@@ -36,7 +36,7 @@ public class LifecycleActivity extends AppCompatActivity {
         StackTraceElement element = null;
         for (StackTraceElement e : stackTrace) {
             if (e.getFileName().startsWith(getClass().getSimpleName())) {
-                if(e.getMethodName().startsWith("on")){
+                if (e.getMethodName().startsWith("on")) {
 //                    System.out.println("MainActivity.logMe = " + e.getMethodName());
                     element = e;
                     break;
@@ -44,7 +44,7 @@ public class LifecycleActivity extends AppCompatActivity {
             }
         }
 
-        if(mPeferenceHelper == null) {
+        if (mPeferenceHelper == null) {
             mPeferenceHelper = ((MyApplication) getApplication()).getPreferenceHelper();
         }
 
@@ -76,6 +76,11 @@ public class LifecycleActivity extends AppCompatActivity {
         logMe();
     }
 
+    // This callback is called only when there is a saved instance previously saved using
+    // onSaveInstanceState(). We restore some state in onCreate() while we can optionally restore
+    // other state here, possibly usable after onStart() has completed.
+    // The savedInstanceState Bundle is same as the one used in onCreate().
+    // see: https://developer.android.com/guide/components/activities/activity-lifecycle.html
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
