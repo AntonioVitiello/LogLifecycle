@@ -10,6 +10,14 @@ public class Log {
     private static boolean sIsLogTagConcat = false;
     private static boolean sDebug = true;
 
+    public static void init(boolean debug) {
+        init(debug, null, false);
+    }
+
+    public static void init(boolean debug, String logTag) {
+        init(debug, logTag, true);
+    }
+
     public static void init(boolean debug, String logTag, boolean isLogTagConcat) {
         sDebug = debug;
         sIsLogTagDefined = logTag != null;
