@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 public class LifecycleActivityWithFragment extends AppCompatActivity {
+    public static final int REMOVE_FRAGMENT_AFTER_MILLISEC = 1500;
     private static final String LIFECYCLE_FRAGMENT_TAG = "lifecycleFragment";
     private Toolbar myToolbar;
     private PreferenceHelper mPeferenceHelper;
@@ -54,11 +55,13 @@ public class LifecycleActivityWithFragment extends AppCompatActivity {
                 Fragment fragment = mFragmentManager.findFragmentByTag(LIFECYCLE_FRAGMENT_TAG);
                 mFragmentManager.beginTransaction()
                         .remove(fragment)
-                        .commit();
+                        // WORKAROUND_FOR_BUG_19917_KEY
+                        .commitAllowingStateLoss();
+//                        .commit();
                 setResult(RESULT_OK);
                 finish();
             }
-        }, 1000);
+        }, REMOVE_FRAGMENT_AFTER_MILLISEC);
     }
 
 }

@@ -10,8 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 public class LifecycleActivity extends AppCompatActivity {
+    public static final int CLOSE_AFTER_MILLISEC = 1500;
+    private static final String BUNDLE_TITLE_KEY = "title";
     private Toolbar myToolbar;
     private PreferenceHelper mPeferenceHelper;
+    private String mTitle;
 
 
     @Override
@@ -63,11 +66,26 @@ public class LifecycleActivity extends AppCompatActivity {
                 setResult(RESULT_OK);
                 finish();
             }
-        }, 1000);
+        }, CLOSE_AFTER_MILLISEC);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(BUNDLE_TITLE_KEY, getString(R.string.activity_lyfecycle));
+        logMe();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        mTitle = savedInstanceState.getString(BUNDLE_TITLE_KEY);
+        logMe();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        logMe();
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
@@ -98,12 +116,6 @@ public class LifecycleActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        logMe();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
         logMe();
     }
 
@@ -150,12 +162,6 @@ public class LifecycleActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        logMe();
-    }
-
-    @Override
     public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onRestoreInstanceState(savedInstanceState, persistentState);
         logMe();
@@ -167,7 +173,7 @@ public class LifecycleActivity extends AppCompatActivity {
         logMe();
     }
 
-/*
+    /*
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
         logMe();

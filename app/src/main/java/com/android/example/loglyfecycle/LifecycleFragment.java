@@ -15,10 +15,9 @@ import android.view.ViewGroup;
  */
 
 public class LifecycleFragment extends Fragment {
+    private static final String BUNDLE_TITLE_KEY = "title";
     private PreferenceHelper mPeferenceHelper;
 
-    public LifecycleFragment() {
-    }
 
     @Nullable
     @Override
@@ -52,6 +51,26 @@ public class LifecycleFragment extends Fragment {
             String fileName = element.getFileName();
             mPeferenceHelper.addLog(methodName + "(" + fileName + ":" + lineNumber + ")");
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        // WORKAROUND_FOR_BUG_19917_KEY
+        outState.putString(BUNDLE_TITLE_KEY, getString(R.string.activity_lyfecycle));
+        logMe();
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        logMe();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        logMe();
     }
 
     @Override
@@ -105,12 +124,6 @@ public class LifecycleFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        logMe();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
         logMe();
     }
 
