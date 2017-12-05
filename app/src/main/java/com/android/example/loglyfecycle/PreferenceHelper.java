@@ -14,6 +14,7 @@ import info.metadude.android.typedpreferences.StringPreference;
  */
 
 public class PreferenceHelper {
+    private static final String LOG_TAG = PreferenceHelper.class.getSimpleName();
     private static final String PREF_KEY_START_LOG = "startLog";
     private static final String MSG_SEPARATOR = ";";
     private static final String PREF_KEY_MSG_LOG = "logs";
@@ -46,7 +47,7 @@ public class PreferenceHelper {
         synchronized (mLogPreference) {
             String logMsg = mLogPreference.isSet() ? mLogPreference.get() + MSG_SEPARATOR + msg : msg;
             mLogPreference.set(logMsg);
-            Log.d(null, "PreferenceHelper.addLog: " + msg);
+            Log.d(LOG_TAG, msg);
         }
     }
 
