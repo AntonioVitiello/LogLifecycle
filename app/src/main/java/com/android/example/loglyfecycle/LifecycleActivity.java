@@ -8,6 +8,7 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 public class LifecycleActivity extends AppCompatActivity {
     public static final int CLOSE_AFTER_MILLISEC = 1500;
@@ -60,6 +61,7 @@ public class LifecycleActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         logMe();
+/*
         myToolbar.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -67,6 +69,7 @@ public class LifecycleActivity extends AppCompatActivity {
                 finish();
             }
         }, CLOSE_AFTER_MILLISEC);
+*/
     }
 
     @Override
@@ -98,6 +101,11 @@ public class LifecycleActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void closeActivity(View view) {
+        setResult(RESULT_OK);
+        finish();
     }
 
     @Override

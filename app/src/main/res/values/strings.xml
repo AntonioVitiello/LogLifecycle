@@ -6,7 +6,10 @@
     <string name="log_reset">Reset log</string>
     <string name="lifecycle_activity_label">Activity lifecycle</string>
     <string name="lifecycle_activity_with_fragment_label">Fragment lifecycle</string>
-    <string name="open_and_close_new_activity">Rotate if you want to see more states</string>
-    <string name="adding_and_removing_fragment">Rotate if you want to see more states</string>
+    <string name="lifecycle_msg">Close Activity to see callbacks log. Rotate if you want to see more states or click Home and then re-launching the app.</string>
+    <string name="adding_and_removing_fragment">This is a Fragment. Click CLOSE FRAGMENT button or rotate if you want to see more states.</string>
     <string name="log_tag">antlap</string>
+    <string name="close_activity">Close this Activity</string>
+    <string name="add_fragment">Add Fragment</string>
+    <string name="close_fragment">Close Fragment</string>
 </resources>

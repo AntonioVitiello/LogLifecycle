@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 public class LifecycleActivityWithFragment extends AppCompatActivity {
     public static final int REMOVE_FRAGMENT_AFTER_MILLISEC = 1500;
@@ -30,14 +31,15 @@ public class LifecycleActivityWithFragment extends AppCompatActivity {
          * Or, the user does any other configuration change
          * Activity will be destroyed and recreated
          ******************************************************************************************/
+/*
         if(savedInstanceState == null) {
             // Create the Addressbar Fragment and add Fragment to this Activity
             mLifecycleFragment = new LifecycleFragment();
             mFragmentManager.beginTransaction()
                     .add(R.id.dynamic_fragment_container, mLifecycleFragment, LIFECYCLE_FRAGMENT_TAG)
                     .commit();
-
         }
+*/
 
         myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -49,6 +51,7 @@ public class LifecycleActivityWithFragment extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+/*
         myToolbar.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -62,6 +65,32 @@ public class LifecycleActivityWithFragment extends AppCompatActivity {
                 finish();
             }
         }, REMOVE_FRAGMENT_AFTER_MILLISEC);
+*/
+    }
+
+    public void addFragment(View view) {
+        Fragment fragment = mFragmentManager.findFragmentByTag(LIFECYCLE_FRAGMENT_TAG);
+        if(fragment == null) {
+            // Create the Addressbar Fragment and add Fragment to this Activity
+            mLifecycleFragment = new LifecycleFragment();
+            mFragmentManager.beginTransaction()
+                    .add(R.id.dynamic_fragment_container, mLifecycleFragment, LIFECYCLE_FRAGMENT_TAG)
+                    .commit();
+        }
+    }
+
+    public void closeFragment(View view) {
+        if(mLifecycleFragment != null) {
+            mFragmentManager.beginTransaction()
+                    .remove(mLifecycleFragment)
+                    .commit();
+            mFragmentManager = null;
+        }
+    }
+
+    public void closeActivity(View view) {
+        setResult(RESULT_OK);
+        finish();
     }
 
 }
