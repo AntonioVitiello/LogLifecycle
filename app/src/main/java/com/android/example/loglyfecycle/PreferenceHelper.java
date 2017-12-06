@@ -47,7 +47,7 @@ public class PreferenceHelper {
         synchronized (mLogPreference) {
             String logMsg = mLogPreference.isSet() ? mLogPreference.get() + MSG_SEPARATOR + msg : msg;
             mLogPreference.set(logMsg);
-            Log.d(LOG_TAG, msg);
+            Log.d(LOG_TAG, "Adding callback: " + msg);
         }
     }
 
