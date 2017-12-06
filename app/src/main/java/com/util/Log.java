@@ -10,6 +10,10 @@ public class Log {
     private static boolean sIsLogTagConcat = false;
     private static boolean sDebug = true;
 
+    public static void init(String logTag) {
+        init(true, logTag, true);
+    }
+
     public static void init(boolean debug) {
         init(debug, null, false);
     }
